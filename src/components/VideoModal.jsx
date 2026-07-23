@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, PlayCircle } from 'lucide-react';
 import './VideoModal.css';
 
 export default function VideoModal({ video, onClose }) {
+  const modalRef = useRef(null);
+
+  // Close modal on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -14,6 +17,66 @@ export default function VideoModal({ video, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  // Request native browser fullscreen on mount (triggered by click user gesture)
+  useEffect(() => {
+    const element = modalRef.current;
+    if (element) {
+      const requestFS = element.requestFullscreen || 
+                        element.webkitRequestFullscreen || 
+                        element.mozRequestFullScreen || 
+                        element.msRequestFullscreen;
+      if (requestFS) {
+        requestFS.call(element).catch(err => {
+          console.warn("Fullscreen request rejected or not supported on this browser/device:", err);
+        });
+      }
+    }
+
+    // Exit fullscreen on close/unmount
+    return () => {
+      const exitFS = document.exitFullscreen || 
+                     document.webkitExitFullscreen || 
+                     document.mozCancelFullScreen || 
+                     document.msExitFullscreen;
+      
+      const isFS = !!(document.fullscreenElement || 
+                      document.webkitFullscreenElement || 
+                      document.mozFullScreenElement || 
+                      document.msFullscreenElement);
+
+      if (exitFS && isFS) {
+        exitFS.call(document).catch(err => {
+          console.warn("Failed to exit fullscreen on unmount:", err);
+        });
+      }
+    };
+  }, []);
+
+  // Listen to native fullscreen changes (auto-close modal if user exits fullscreen via system swipe/back gesture)
+  useEffect(() => {
+    const handleFSChange = () => {
+      const isFS = !!(document.fullscreenElement || 
+                      document.webkitFullscreenElement || 
+                      document.mozFullScreenElement || 
+                      document.msFullscreenElement);
+      if (!isFS) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFSChange);
+    document.addEventListener('webkitfullscreenchange', handleFSChange);
+    document.addEventListener('mozfullscreenchange', handleFSChange);
+    document.addEventListener('MSFullscreenChange', handleFSChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFSChange);
+      document.removeEventListener('webkitfullscreenchange', handleFSChange);
+      document.removeEventListener('mozfullscreenchange', handleFSChange);
+      document.removeEventListener('MSFullscreenChange', handleFSChange);
+    };
+  }, [onClose]);
+
   if (!video) return null;
 
   const playerUrl = `https://player.vimeo.com/video/${video.id}?autoplay=1&title=0&byline=0&portrait=0`;
@@ -21,12 +84,14 @@ export default function VideoModal({ video, onClose }) {
   return (
     <AnimatePresence>
       <motion.div
+        ref={modalRef}
         className="modal-backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
+
         <motion.div
           className="modal-content-box"
           initial={{ scale: 0.9, opacity: 0, y: 30 }}
