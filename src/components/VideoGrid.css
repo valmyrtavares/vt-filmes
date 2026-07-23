@@ -1,0 +1,68 @@
+.video-grid-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.grid-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-glass-card);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  padding: 1.25rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(197, 155, 39, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+.grid-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.grid-category-path {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.grid-main-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-blue-deep);
+}
+
+.grid-count-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-blue-royal);
+  background: rgba(19, 64, 116, 0.08);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(19, 64, 116, 0.15);
+}
+
+/* Responsive Grid Layout */
+.cards-container-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  padding-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+  align-content: start;
+}
