@@ -27,76 +27,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(250, 252, 255, 0.15) 0%, rgba(235, 242, 250, 0.55) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 37, 69, 0.35) 0%,
+    rgba(11, 37, 69, 0.1) 40%,
+    rgba(11, 37, 69, 0.4) 100%
+  );
   z-index: 2;
   pointer-events: none;
-}
-
-/* Home Welcome Badge Overlay */
-.home-hero-content {
-  position: absolute;
-  bottom: 3.5rem;
-  left: 3rem;
-  z-index: 10;
-  max-width: 520px;
-  background: var(--bg-glass-card);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  padding: 1.75rem 2.25rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(197, 155, 39, 0.3);
-  box-shadow: var(--shadow-lg), var(--gold-border-glow);
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-gold-dark);
-  background: rgba(212, 175, 55, 0.12);
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  width: fit-content;
-}
-
-.hero-headline {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-blue-deep);
-  line-height: 1.25;
-}
-
-.hero-description {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.audio-toggle-button {
-  margin-top: 0.25rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-blue-deep);
-  background: var(--gold-gradient);
-  padding: 0.55rem 1.1rem;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-gold);
-  width: fit-content;
-  transition: transform var(--transition-bounce);
-  cursor: pointer;
-}
-
-.audio-toggle-button:hover {
-  transform: scale(1.04);
 }
