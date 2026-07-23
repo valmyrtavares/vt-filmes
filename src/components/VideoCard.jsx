@@ -6,7 +6,6 @@ import './VideoCard.css';
 export default function VideoCard({ video, categoryName, subcategoryName, onClick }) {
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [vimeoTitle, setVimeoTitle] = useState(video.title);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -24,9 +23,6 @@ export default function VideoCard({ video, categoryName, subcategoryName, onClic
       })
       .catch((err) => {
         console.warn(`Could not fetch Vimeo metadata for ${video.id}, using fallback`, err);
-      })
-      .finally(() => {
-        if (isMounted) setIsLoading(false);
       });
 
     return () => {
@@ -64,7 +60,7 @@ export default function VideoCard({ video, categoryName, subcategoryName, onClic
 
       <div className="card-details">
         <span className="card-badge">
-          {subcategoryName || categoryName || 'VT Videos'}
+          {subcategoryName || categoryName || 'VT Filmes'}
         </span>
         <h3 className="card-title">{vimeoTitle}</h3>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Video, Play, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import { CATEGORIES } from '../data/videoData';
 import './Header.css';
 
@@ -88,13 +88,13 @@ export default function Header({
       <div 
         className="brand-logo-button" 
         onClick={onResetHome}
-        title="Voltar para a Home (VT Videos)"
+        title="Voltar para a Home (VT Filmes)"
       >
         <div className="brand-icon-box">
           VT
         </div>
         <div className="brand-text-container">
-          <span className="brand-title">VT Videos</span>
+          <span className="brand-title">VT Filmes</span>
           <span className="brand-subtitle">Valmyr Tavares</span>
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function Header({
                             onClick={() => handleSubcategoryClick(category, sub)}
                           >
                             <span>{sub.name}</span>
-                            {isSubActive && <Sparkles size={14} color="#C59B27" />}
+                            {isSubActive && <Sparkles size={14} color="#E5C378" />}
                           </motion.button>
                         );
                       })}
