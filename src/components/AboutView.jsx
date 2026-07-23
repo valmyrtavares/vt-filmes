@@ -3,6 +3,26 @@ import { motion } from 'framer-motion';
 import { Camera, Mail, Phone, Award, Video, Heart } from 'lucide-react';
 import '../assets/styles/AboutView.css';
 
+// Inline Instagram SVG component following Lucide design parameters (stroke, rounding)
+const InstagramIcon = ({ size = 24, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
 export default function AboutView() {
   return (
     <div className="about-container custom-scrollbar">
@@ -20,7 +40,7 @@ export default function AboutView() {
             </div>
           </div>
           <h2 className="about-name">Valmyr Tavares</h2>
-          <span className="about-role-badge">Diretor & Videomaker</span>
+          <span className="about-role-badge">Desenvolvedor & Videomaker</span>
         </div>
 
         {/* Biography Column */}
@@ -52,12 +72,22 @@ export default function AboutView() {
 
           <div className="about-actions">
             <a
-              href="https://wa.me/5511999999999" 
+              href="https://wa.me/551197041310" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn-contact-gold"
             >
               <Phone size={18} /> Entrar em Contato
+            </a>
+            
+            <a
+              href="https://www.instagram.com/valmyr_tavares/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-instagram-outline"
+              title="Siga no Instagram"
+            >
+              <InstagramIcon size={18} /> Instagram
             </a>
           </div>
         </div>
