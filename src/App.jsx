@@ -12,7 +12,7 @@ export default function App() {
   const [isAboutView, setIsAboutView] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  // Reset to Home Fullscreen Vimeo Reel
+  // Reset to Home
   const handleResetHome = () => {
     setActiveCategory(null);
     setActiveSubcategory(null);
@@ -20,7 +20,7 @@ export default function App() {
     setSelectedVideo(null);
   };
 
-  // Select main category (Batizado, Quem Sou, or Category header click)
+  // Select main category
   const handleSelectCategory = (category) => {
     if (category.isAboutPage) {
       setIsAboutView(true);
@@ -40,13 +40,10 @@ export default function App() {
     setActiveSubcategory(subcategory);
   };
 
-  // Determine if we are showing Home background video
-  const isHomeView = !activeCategory && !isAboutView;
-
   return (
     <div className="app-container">
-      {/* Background Vimeo Video (Active on Home) */}
-      {isHomeView && <BackgroundVideo />}
+      {/* O vídeo de fundo da Home permanece SEMPRE visível em todas as telas */}
+      <BackgroundVideo />
 
       {/* Main Content View Stack */}
       <div className="content-layer">
@@ -58,7 +55,7 @@ export default function App() {
           onResetHome={handleResetHome}
         />
 
-        {/* Content Section: Grid, About, or Home Background */}
+        {/* Content Section: Grid, About, ou Home zerada */}
         {isAboutView ? (
           <AboutView />
         ) : activeCategory ? (
@@ -70,7 +67,7 @@ export default function App() {
         ) : null}
       </div>
 
-      {/* Fullscreen Video Modal Player */}
+      {/* Fullscreen Video Modal Player (Quase tamanho total da tela) */}
       {selectedVideo && (
         <VideoModal
           video={selectedVideo}
