@@ -99,3 +99,44 @@
   height: 100%;
   border: none;
 }
+
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 0.75rem;
+  }
+
+
+  .modal-content-box {
+    width: 95vw;
+  }
+
+  .modal-header {
+    padding: 0.85rem 1.25rem;
+  }
+
+  .modal-icon-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .modal-icon-badge svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .modal-video-title {
+    font-size: 1.05rem;
+  }
+
+  .modal-close-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .modal-close-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+

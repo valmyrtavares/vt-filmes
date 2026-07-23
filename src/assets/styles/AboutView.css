@@ -146,3 +146,53 @@
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(197, 155, 39, 0.4);
 }
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1rem 0.85rem;
+  }
+
+
+  .about-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .about-avatar-box {
+    width: 120px;
+    height: 120px;
+  }
+
+  .about-avatar-inner {
+    font-size: 2.75rem;
+  }
+
+  .about-name {
+    font-size: 1.8rem;
+  }
+
+  .about-headline {
+    font-size: 1.3rem;
+  }
+
+  .about-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .about-features-list {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .about-actions {
+    justify-content: center;
+  }
+
+  .btn-contact-gold {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

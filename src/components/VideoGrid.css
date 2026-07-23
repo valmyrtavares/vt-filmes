@@ -69,3 +69,37 @@
   gap: 1.85rem;
   align-content: start;
 }
+
+@media (max-width: 768px) {
+  .video-grid-wrapper {
+    padding: 1rem 0.85rem;
+    gap: 1rem;
+  }
+
+
+  .grid-header-bar {
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .grid-main-title {
+    font-size: 1.4rem;
+  }
+
+  .grid-category-path {
+    font-size: 0.72rem;
+    letter-spacing: 1.2px;
+  }
+
+  .grid-count-badge {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.95rem;
+  }
+
+  .cards-container-scrollable {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-right: 0;
+  }
+}
+
