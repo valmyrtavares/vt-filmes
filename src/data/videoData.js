@@ -1,4 +1,7 @@
-export const HOME_VIDEO_ID = "57230104";
+export const HOME_VIDEO = {
+  id: "57230104",
+  hash: "5e78cb1a98"
+};
 
 export const CATEGORIES = [
   {

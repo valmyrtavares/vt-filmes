@@ -1,20 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Film } from 'lucide-react';
-import { HOME_VIDEO_ID } from '../data/videoData';
+import { Sparkles } from 'lucide-react';
 import './BackgroundVideo.css';
 
 export default function BackgroundVideo() {
-  // Embedded Vimeo Player configured for seamless background loop
-  const embedUrl = `https://player.vimeo.com/video/${HOME_VIDEO_ID}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`;
+  // Novo embed exato gerado pelo Vimeo com autoplay=1 e muted=1 habilitados
+  const embedUrl = "https://player.vimeo.com/video/57230104?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1";
 
   return (
     <div className="home-background-container">
       <iframe
         className="vimeo-bg-iframe"
         src={embedUrl}
-        title="VT Videos Reel Background"
-        allow="autoplay; fullscreen; picture-in-picture"
+        title="site front page 1"
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       />
       <div className="home-video-overlay" />
