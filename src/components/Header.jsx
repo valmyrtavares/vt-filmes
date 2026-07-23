@@ -11,9 +11,19 @@ export default function Header({
   onSelectSubcategory, 
   onResetHome 
 }) {
-  const [openCategory, setOpenCategory] = useState(null);
+  const [openCategory, setOpenCategory] = useState(activeCategory?.id || null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
+
+  // Sync openCategory with activeCategory prop changes (e.g. on back/forward browser navigation)
+  useEffect(() => {
+    if (activeCategory) {
+      setOpenCategory(activeCategory.id);
+    } else {
+      setOpenCategory(null);
+    }
+  }, [activeCategory]);
+
 
   // Close dropdowns and mobile menu when clicking outside
   useEffect(() => {
